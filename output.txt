@@ -1,0 +1,180 @@
+ENABLE_TIME=True
+
+=== Initial Scheduling ===
+
+Allocations:
+  J5 -> S1, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=15
+  J6 -> S3, GPUs [0, 1, 2, 3], mem/GPU=48, start=0, end=6
+  J8 -> S2, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=4
+
+Permanently unschedulable:
+  J4: requires 10 GPUs with 20GB each, but no server can provide that
+
+Temporarily unschedulable:
+  J1: job could fit on the cluster in theory, but not with current free resources
+  J2: job could fit on the cluster in theory, but not with current free resources
+  J3: job could fit on the cluster in theory, but not with current free resources
+  J7: job could fit on the cluster in theory, but not with current free resources
+
+=== Running time-based simulation until completion ===
+
+=== Initial Status ===
+Current time: 0
+Finished jobs: None
+
+Active allocations:
+  J5 -> S1, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=15
+  J6 -> S3, GPUs [0, 1, 2, 3], mem/GPU=48, start=0, end=6
+  J8 -> S2, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=4
+
+Pending jobs:
+  J1: GPUs=6, mem/GPU=60, execution_time=12
+  J2: GPUs=4, mem/GPU=40, execution_time=7
+  J3: GPUs=2, mem/GPU=20, execution_time=3
+  J7: GPUs=1, mem/GPU=10
+
+Cluster state:
+  S1: [0, 0, 0, 0, 0, 0, 0, 0]
+  S2: [0, 0, 0, 0, 0, 0, 0, 0]
+  S3: [0, 0, 0, 0]
+
+=== Scheduler Status ===
+Time advanced from 0 to 4 (delta=4)
+Finished jobs:
+  J8
+
+Active allocations:
+  J1 -> S2, GPUs [0, 1, 2, 3, 4, 5], mem/GPU=60, start=4, end=16
+  J3 -> S2, GPUs [0, 1], mem/GPU=20, start=4, end=7
+  J5 -> S1, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=15
+  J6 -> S3, GPUs [0, 1, 2, 3], mem/GPU=48, start=0, end=6
+  J7 -> S2, GPUs [2], mem/GPU=10, start=4, end=14
+
+Pending jobs:
+  J2: GPUs=4, mem/GPU=40, execution_time=7
+
+Cluster state:
+  S1: [0, 0, 0, 0, 0, 0, 0, 0]
+  S2: [0, 0, 10, 20, 20, 20, 80, 80]
+  S3: [0, 0, 0, 0]
+
+=== Scheduler Status ===
+Time advanced from 4 to 6 (delta=2)
+Finished jobs:
+  J6
+
+Active allocations:
+  J1 -> S2, GPUs [0, 1, 2, 3, 4, 5], mem/GPU=60, start=4, end=16
+  J2 -> S3, GPUs [0, 1, 2, 3], mem/GPU=40, start=6, end=13
+  J3 -> S2, GPUs [0, 1], mem/GPU=20, start=4, end=7
+  J5 -> S1, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=15
+  J7 -> S2, GPUs [2], mem/GPU=10, start=4, end=14
+
+Pending jobs:
+  None
+
+Cluster state:
+  S1: [0, 0, 0, 0, 0, 0, 0, 0]
+  S2: [0, 0, 10, 20, 20, 20, 80, 80]
+  S3: [8, 8, 8, 8]
+
+=== Scheduler Status ===
+Time advanced from 6 to 7 (delta=1)
+Finished jobs:
+  J3
+
+Active allocations:
+  J1 -> S2, GPUs [0, 1, 2, 3, 4, 5], mem/GPU=60, start=4, end=16
+  J2 -> S3, GPUs [0, 1, 2, 3], mem/GPU=40, start=6, end=13
+  J5 -> S1, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=15
+  J7 -> S2, GPUs [2], mem/GPU=10, start=4, end=14
+
+Pending jobs:
+  None
+
+Cluster state:
+  S1: [0, 0, 0, 0, 0, 0, 0, 0]
+  S2: [20, 20, 10, 20, 20, 20, 80, 80]
+  S3: [8, 8, 8, 8]
+
+=== Scheduler Status ===
+Time advanced from 7 to 13 (delta=6)
+Finished jobs:
+  J2
+
+Active allocations:
+  J1 -> S2, GPUs [0, 1, 2, 3, 4, 5], mem/GPU=60, start=4, end=16
+  J5 -> S1, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=15
+  J7 -> S2, GPUs [2], mem/GPU=10, start=4, end=14
+
+Pending jobs:
+  None
+
+Cluster state:
+  S1: [0, 0, 0, 0, 0, 0, 0, 0]
+  S2: [20, 20, 10, 20, 20, 20, 80, 80]
+  S3: [48, 48, 48, 48]
+
+=== Scheduler Status ===
+Time advanced from 13 to 14 (delta=1)
+Finished jobs:
+  J7
+
+Active allocations:
+  J1 -> S2, GPUs [0, 1, 2, 3, 4, 5], mem/GPU=60, start=4, end=16
+  J5 -> S1, GPUs [0, 1, 2, 3, 4, 5, 6, 7], mem/GPU=80, start=0, end=15
+
+Pending jobs:
+  None
+
+Cluster state:
+  S1: [0, 0, 0, 0, 0, 0, 0, 0]
+  S2: [20, 20, 20, 20, 20, 20, 80, 80]
+  S3: [48, 48, 48, 48]
+
+=== Scheduler Status ===
+Time advanced from 14 to 15 (delta=1)
+Finished jobs:
+  J5
+
+Active allocations:
+  J1 -> S2, GPUs [0, 1, 2, 3, 4, 5], mem/GPU=60, start=4, end=16
+
+Pending jobs:
+  None
+
+Cluster state:
+  S1: [80, 80, 80, 80, 80, 80, 80, 80]
+  S2: [20, 20, 20, 20, 20, 20, 80, 80]
+  S3: [48, 48, 48, 48]
+
+=== Scheduler Status ===
+Time advanced from 15 to 16 (delta=1)
+Finished jobs:
+  J1
+
+Active allocations:
+  None
+
+Pending jobs:
+  None
+
+Cluster state:
+  S1: [80, 80, 80, 80, 80, 80, 80, 80]
+  S2: [80, 80, 80, 80, 80, 80, 80, 80]
+  S3: [48, 48, 48, 48]
+
+=== Simulation Complete ===
+Current time: 16
+Finished jobs: None
+
+Active allocations:
+  None
+
+Pending jobs:
+  None
+
+Cluster state:
+  S1: [80, 80, 80, 80, 80, 80, 80, 80]
+  S2: [80, 80, 80, 80, 80, 80, 80, 80]
+  S3: [48, 48, 48, 48]
