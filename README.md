@@ -9,7 +9,8 @@
 python main.py
 
 To execute with the particular input file under /inputs directory
-python main.py <filename>
+
+python main.py your_file.txt
 
 ### 2. Run with time-aware scheduling
 
@@ -25,6 +26,7 @@ sys.stdout = open("output.txt", "w")
 
 ## Code Structure
 
+```text
 .
 ├── main.py               # Entry point
 ├── scheduler.py          # Core scheduling logic
@@ -34,6 +36,7 @@ sys.stdout = open("output.txt", "w")
 │   ├── allocation.py     # Allocation metadata
 │   └── exceptions.py     # Custom exceptions
 
+```
 ---
 
 ### Flow
@@ -99,7 +102,7 @@ Tie is broken by server ID, so **J5 is placed on S1**.
 **Allocation**
 - `J5 -> S1, GPUs [0,1,2,3,4,5,6,7], start=0, end=15`
 
-**State**
+**State (shows avaiable resources)**
 - `S1 = [0,0,0,0,0,0,0,0]`
 - `S2 = [80,80,80,80,80,80,80,80]`
 - `S3 = [48,48,48,48]`
@@ -202,9 +205,7 @@ Feasible servers:
 - **S2** → score = 15200
 - **S3** → Not possible
 
-\[
-6 \cdot 20^2 + 2 \cdot 80^2 = 15200
-\]
+6 · 20² + 2 · 80² = 15200
 
 So **J1 is placed on S2**.
 
@@ -236,9 +237,7 @@ If J3 is placed on the two smallest feasible GPUs on S2:
 
 `[20,20,20,20,20,20,80,80] -> [0,0,20,20,20,20,80,80]`
 
-\[
-4 \cdot 20^2 + 2 \cdot 80^2 = 14400
-\]
+4 · 20² + 2 · 80² = 14400
 
 So **J3 is placed on S2**.
 
@@ -257,9 +256,7 @@ J7 uses the smallest feasible GPU on S2:
 
 `[0,0,20,20,20,20,80,80] -> [0,0,10,20,20,20,80,80]`
 
-\[
-10^2 + 3 \cdot 20^2 + 2 \cdot 80^2 = 14100
-\]
+10² + 3 · 20² + 2 · 80² = 14100
 
 So **J7 is placed on S2**.
 
@@ -289,9 +286,7 @@ After placement on S3:
 
 `[48,48,48,48] -> [8,8,8,8]`
 
-\[
-4 \cdot 8^2 = 256
-\]
+4 · 8² = 256
 
 So **J2 is placed on S3**.
 
